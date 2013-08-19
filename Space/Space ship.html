@@ -1,0 +1,199 @@
+<!doctype html>
+<html>
+<meta charset="windows-1251" />
+<body>
+<a href="javascript:void(0)" onclick="trace(); return false">
+  Записать результаты в консоль (межгалактические перелёты)
+</a>
+<script type='text/javascript'>
+
+/** Создает экземпляр космического корабля.
+ @name Vessel
+ @param {String} name Название корабля.
+ @param {Number}[] position Местоположение корабля.
+ @param {Number} capacity Грузоподъемность корабля.
+*/
+function Vessel(name, position, capacity)
+{
+    this.name = name;
+    this.position = position;
+    this.capacity = capacity;
+    this.cargoLoaded = 0;
+}
+
+/**
+ Выводит текущее состояние корабля: имя, местоположение, доступную грузоподъемность.
+ @example
+ vessel.report(); // Грузовой корабль. Местоположение: Земля. Товаров нет.
+ @example
+ vesserl.report(); // Грузовой корабль. Местоположение: 50,20. Груз: 200т.
+ @name Vessel.report
+*/
+Vessel.prototype.report = function () 
+{
+    var name = 'Корабль: ' + '\'' + this.name + '\'. ';
+    var location = 'Местоположение: ' + this.position + '. ';
+    var cargoBay = (!this.cargoLoaded) ? 'Товаров нет.' : 'Занято: ' + this.cargoLoaded + ' из ' + this.capacity + '. '
+    console.log(name +  location + cargoBay);
+}
+
+/**
+ Выводит количество свободного места на корабле.
+ @name Vessel.getFreeSpace
+*/
+Vessel.prototype.getFreeSpace = function () 
+{
+	//console.log('Свободно ' + (this.capacity - this.cargoLoaded) + 'т.');
+    return this.capacity - this.cargoLoaded;
+}
+
+/**
+ Выводит количество занятого места на корабле.
+ @name Vessel.getOccupiedSpace
+*/
+Vessel.prototype.getOccupiedSpace = function () 
+{
+    //console.log('Текущая загруженность корабля: ' + this.cargoLoaded + 'т.');
+	return this.cargoLoaded;
+}
+
+/**
+ Переносит корабль в указанную точку.
+ @param {Number}[]|Planet newPosition Новое местоположение корабля.
+ @example
+ vessel.flyTo([1,1]);
+ @example
+ var earth = new Planet('Земля', [1,1]);
+ vessel.flyTo(earth);
+ @name Vessel.report
+*/
+Vessel.prototype.flyTo = function (newPosition) 
+{
+    if (newPosition.name) {
+        this.position = newPosition.position;
+		return
+	}
+    this.position = newPosition;
+}
+
+/**
+* Создает экземпляр планеты.
+* @name Planet
+* @param {String} name Название Планеты.
+* @param {Number}[] position Местоположение планеты.
+* @param {Number} availableCargo Доступное количество груза.
+*/
+function Planet(name, position, availableCargo) 
+{
+    this.name = name;
+    this.position = position;
+    this.availableCargo = availableCargo;
+}
+
+/**
+* Выводит текущее состояние планеты: имя, местоположение, количество доступного груза.
+* @name Planet.report
+*/
+Planet.prototype.report = function () 
+{
+    var name = 'Планета: ' + '\'' +this.name+ '\'. ';
+    var location = 'Местоположение: ' +this.position[0]+ ',' +this.position[1] + '. ';
+    var availableCargo = this.availableCargo == 0 ? 'Грузов нет' : 'Доступно груза ' +this.availableCargo+ 'т. ';
+
+    console.log(name + location + availableCargo);
+}
+
+/**
+* Возвращает доступное количество груза планеты.
+* @name Vessel.getAvailableCargo
+*/
+Planet.prototype.getAvailableCargo = function () 
+{
+    return this.availableCargo;
+}
+
+/**
+* Загружает на корабль заданное количество груза.
+*
+* Перед загрузкой корабль должен приземлиться на планету.
+* @param {Vessel} vessel Загружаемый корабль.
+* @param {Number} cargoWeight Вес загружаемого груза.
+* @name Vessel.loadCargoTo
+*/
+Planet.prototype.loadCargoTo = function (vessel, cargoWeight) 
+{
+    if (vessel.position[0] == this.position[0] && vessel.position[1] == this.position[1]) 
+	{
+
+        var availablePlanetCargo = this.getAvailableCargo();
+        if (availablePlanetCargo < cargoWeight) 
+		{
+			console.log('Недостаточно груза для погрузки на корабль. Будет произведена попытка загрузки оставшегося груза. ');
+			cargoWeight = availablePlanetCargo;
+        }
+		if (vessel.getFreeSpace() >= cargoWeight) 
+		{
+			this.availableCargo -= cargoWeight;
+			vessel.cargoLoaded += cargoWeight;
+		} 
+		else
+		{
+			console.log('Слишком мало места. Всего ' + vessel.getFreeSpace() + ' тонн доступно.');
+		}
+    }
+	else
+	{
+        console.log('Корабль не на планете.');
+    }
+}
+
+/**
+* Выгружает с корабля заданное количество груза.
+*
+* Перед выгрузкой корабль должен приземлиться на планету.
+* @param {Vessel} vessel Разгружаемый корабль.
+* @param {Number} cargoWeight Вес выгружаемого груза.
+* @name Vessel.unloadCargoFrom
+*/
+Planet.prototype.unloadCargoFrom = function (vessel, cargoWeight) 
+{
+    if (this.position[0] == vessel.position[0] && this.position[1] == vessel.position[1]) 
+	{
+        var cargoBay = vessel.getOccupiedSpace();
+        if (cargoBay >= cargoWeight) 
+		{
+			this.availableCargo += cargoWeight;
+            vessel.cargoLoaded -= cargoWeight;
+        } 
+		else
+		{
+            console.log('Невозможно осуществить выгрузку, требуется дополнительно ' + (cargoWeight - cargoBay) + ' тонн груза.');
+        } 
+    }
+	else 
+	{
+        console.log('Корабль не на планете.');
+    }
+}
+	var vessel = new Vessel('Яндекс', [0,0], 1000);
+	var planetA = new Planet('A', [0,0], 0);
+	var planetB = new Planet('B', [100, 100], 5000);
+function trace()
+{
+	vessel.report(); 
+	planetA.report();
+	planetB.report(); 
+	
+	vessel.flyTo(planetB);
+	planetB.loadCargoTo(vessel, 1000);
+	vessel.report();
+
+	vessel.flyTo(planetA);
+	planetA.unloadCargoFrom(vessel, 500);
+	vessel.report(); 
+	planetA.report();
+	planetB.report();
+}
+</script>
+</body>
+</html>

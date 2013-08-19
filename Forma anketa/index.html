@@ -1,0 +1,261 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Анкета</title>
+    <link type="text/css" media="screen" href="screen.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="wrap">
+        <div class="b-section-tabs">
+            <ul class="section-tabs">
+                <li class="person">1. О себе</li>
+                <li class="school">2. О школе</li>
+                <li class="workflow">3. О работе</li>
+                <li class="tasks">4. Задания</li>
+                <li class="about">5. Дополнительная информация</li>
+            </ul>
+        </div>
+        <div class="fieldsets">
+            <fieldset class="tab person">
+                <legend>О себе</legend>
+                <div class="b-task clearfix">
+                    <div class="b-task-text">
+                        <label>Год рождения:</label>
+                    </div>
+                    <div class="b-task-input">
+                        <input type="number" name="year" />
+                    </div>
+                </div>
+                <div class="b-task clearfix">
+                    <div class="b-task-text">
+                        <label>Город, в котором вы живёте:</label>
+                    </div>
+                    <div class="b-task-input">
+                        <input type="text" name="city" />
+                    </div>
+                </div>
+                <div class="b-task clearfix">
+                    <div class="b-task-text">
+                        <label>Вуз, факультет, специальность, кафедра:</label>
+                    </div>
+                    <div class="b-task-input">
+                        <textarea name="education"></textarea>
+                    </div>
+                </div>
+                <div class="b-task clearfix">
+                    <div class="b-task-text">
+                        <label>Год окончания вуза:</label>
+                    </div>
+                    <div class="b-task-input">
+                        <input type="number" name="education_last_year" />
+                    </div>
+                </div>
+                <div class="b-task clearfix">
+                    <div class="b-task-text">
+                        <label>Уровень владения английским языком:</label>
+                    </div>
+                    <div class="b-task-input">
+                        <input type="radio" name="english_level" value="beginner" checked="checked" /><label for="english_level">Начальный</label><br />
+                        <input type="radio" name="english_level" value="intermediate" /><label for="english_level">Средний</label><br />
+                        <input type="radio" name="english_level" value="proficient" /><label for="english_level">Свободное владение</label>
+                    </div>
+                </div>
+                <div class="b-task clearfix">
+                    <div class="b-task-text">
+                        <label>Дополнительная информация об уровне владения английским языком:</label>
+                    </div>
+                    <div class="b-task-input">
+                        <textarea name="english_comment"></textarea>
+                    </div>
+                </div>
+
+            </fieldset>
+            <fieldset class="tab school">
+                <legend>О школе</legend>
+                <div class="b-task clearfix">
+                    <div class="b-task-text">
+                        <label>Чего вы ожидаете от участия в Школе?</label>
+                    </div>
+                    <div class="b-task-input">
+                        <textarea name="school_expectation"></textarea>
+                    </div>
+                </div>
+                <div class="b-task clearfix">
+                    <div class="b-task-text">
+                        <label>Откуда вы о нас узнали?</label>
+                    </div>
+                    <div class="b-task-input">
+                        <textarea name="school_source"></textarea>
+                    </div>
+                </div>
+                <div class="b-task clearfix">
+                    <div class="b-task-text">
+                        <label>Сколько времени вы были бы готовы уделять стажировке или работе в Яндексе?</label>
+                    </div>
+                    <div class="b-task-input">
+                        <textarea name="school_time"></textarea>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset class="tab workflow">
+                <legend>О работе</legend>
+                <div class="b-task clearfix">
+                    <div class="b-task-text">
+                        <p>Расскажите о вашем опыте разработки. Нам будет интересно всё — как серьезный интерфейс, так и просто домашняя страничка.</p>
+                    </div>
+                    <div class="b-task-input">
+                        <textarea name="experience"></textarea>
+                    </div>
+                </div>
+                <div class="b-task clearfix">
+                    <div class="b-task-text">
+                        <p>Если вы где-нибудь работали, расскажите, какие у вас были должностные обязанности и был ли опыт работы в команде.</p>
+                    </div>
+                    <div class="b-task-input">
+                        <textarea name="duties"></textarea>
+                    </div>
+                </div>
+                <div class="b-task clearfix">
+                    <div class="b-task-text">
+                        <p>Перечислите, какими программными продуктами вы пользуетесь в своей работе — от редактора до специализированных утилит (Intellij Idea, Node.js, Uglify.js, GNU Make). Для каждого инструмента укажите, какие задачи вы с помощью него решаете и почему выбрали именно его.</p>
+                    </div>
+                    <div class="b-task-input">
+                        <textarea name="software"></textarea>
+                    </div>
+                </div>
+                <div class="b-task clearfix">
+                    <div class="b-task-text">
+                        <p>Пользуетесь ли вы командной строкой? Какими командами вы пользуетесь и какие задачи вы решаете с их помощью? С какими программами вы преимущественно или полностью взаимодействуете через интерфейс командной строки?</p>
+                    </div>
+                    <div class="b-task-input">
+                        <textarea name="cmd"></textarea>
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset class="tab tasks">
+                <legend>Задания</legend>
+                <div class="b-task clearfix">
+                    <div class="b-task-text">
+                        <p>1. Напишите на JavaScript функцию, которая выводит список всех чисел, которые равны сумме факториалов своих цифр. Пример такого числа:</p>
+                        <p>4! + 0! + 5! + 8! + 5! = 40585</p>
+                        <p>В качестве ответа на вопрос пришлите ссылку на http://jsfiddle.net/ с вашим кодом или на ваш репозиторий на https://github.com/.</p>
+                    </div>
+                    <div class="b-task-input">
+                        <input type="url" name="task1" />
+                    </div>
+                </div>
+                <div class="b-task clearfix">
+                    <div class="b-task-text">
+                        <p>2. Вы — пилот грузового межгалактического корабля. Ваша работа — перевозка грузов с одной планету на другую. Грузоподъемность вашего корабля ограничена, поэтому за один рейс вы можете перевезти не более N кг полезного груза. Ваш корабль умеет сообщать свое состояние (местоположение и степень загруженности), а также летать в любую точку пространства. Каждая планета может содержать на себе груз, который можно взять. Также на каждой планете груз можно оставить.</p>
+                        <p><span>Задание:</span> Даны незавершенные интерфейсы корабля и планеты. Напишите недостающий код. Полное условие задачи доступно на https://github.com/yandex-shri/introtask-space. </p>
+                        <p>В качестве ответа на вопрос пришлите ссылку на http://jsfiddle.net/ с вашим кодом или на ваш репозиторий на https://github.com/.</p>
+                    </div>
+                    <div class="b-task-input">
+                        <input type="url" name="task2" />
+                    </div>
+                </div>
+                <div class="b-task clearfix">
+                    <div class="b-task-text">
+                        <p>3. Сверстайте форму-анкету с нашими заданиями для кандидатов. Страница должна работать в следующих браузерах: MSIE (8, 9, 10), Google Chrome (26, 27), Firefox (20, 21), Opera (12.15, 12.14), Яндекс.Браузер 1.5. По возможности используйте приёмы безопасной деградации CSS. Страница должна содержать интерактив, реализованный с помощью JS и jQuery. Это может быть:</p>
+                        <ul>
+                            <li>проверка полноты и правильности заполнения полей (где это возможно);</li>
+                            <li>возможность свернуть и развернуть разделы (аккордеон);</li>
+                            <li>индикатор заполнения анкеты;</li>
+                            <li>что-нибудь ещё.</li>
+                        </ul>
+                        <p>Подумайте над тем, как эти данные будут отправляться на сервер. Будет плюсом, если вы сверстаете страницу, используя БЭМ.</p>
+                        <p>Дополнительные задания:</p>
+                        <p>1. Выполните задание про форму-анкету, используя один из классических шаблонизаторов: Handlebars, mustache, Dust, Jade и т.п.</p>
+                        <p>2. Выполните задание про форму-анкету, используя один из экзотических шаблонизаторов: XSLT, YATE, BEMHTML и т.п.</p>
+                        <p>Разработку необходимо вести на https://github.com/. В качестве ответа на вопрос пришлите ссылку на проект.</p>
+                    </div>
+                    <div class="b-task-input">
+                        <input type="url" name="task3" />
+                    </div>
+                </div>
+            </fieldset>
+            <fieldset class="tab about">
+                <legend>Дополнительная информация</legend>
+                <div class="b-task clearfix">
+                    <div class="b-task-text">
+                        <label>Резюме (до 250 КБ):</label>
+                    </div>
+                    <div class="b-task-input">
+                        <input type="file" name="cv" />
+                    </div>
+                </div>
+                <div class="b-task clearfix">
+                    <div class="b-task-text">
+                        <label>Ссылка на профиль в Моем Круге:</label>
+                    </div>
+                    <div class="b-task-input">
+                        <input type="text" name="moy_krug" />
+                    </div>
+                </div>
+                <div class="b-task clearfix">
+                    <div class="b-task-text">
+                        <label>Имя, Фамилия:</label>
+                    </div>
+                    <div class="b-task-input">
+                        <input type="text" name="name" />
+                    </div>
+                </div>
+                <div class="b-task clearfix">
+                    <div class="b-task-text">
+                        <label>Телефон:</label>
+                    </div>
+                    <div class="b-task-input">
+                        <input type="text" name="phone" />
+                    </div>
+                </div>
+                <div class="b-task clearfix">
+                    <div class="b-task-text">
+                        <label>E-mail:</label>
+                    </div>
+                    <div class="b-task-input">
+                        <input type="email" name="email" />
+                    </div>
+                </div>
+                <div class="b-task clearfix">
+                    <div class="b-task-text">
+                        <label>Дополнительные сведения:</label>
+                    </div>
+                    <div class="b-task-input">
+                        <textarea name="additional"></textarea>
+                    </div>
+                </div>
+                <div class="b-task clearfix">
+                    <div class="b-task-text">
+                        <label>Откуда вы узнали о нашем предложении?</label>
+                    </div>
+                    <div class="b-task-input">
+                        <select name="ya_source">
+                            <option value="-1">-ничего не выбрано--</option>
+                            <option value="hr">от HR-менеджера Яндекса</option>
+                            <option value="sub">Я.Субботник</option>
+                            <option value="yet">Yet another Conference</option>
+                            <option value="conf">на другой конференции</option>
+                            <option value="search">из поиска</option>
+                            <option value="rec">по рекомендации</option>
+                            <option value="other">другое</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="b-task clearfix">
+                    <div class="b-task-text">
+                        <label>Согласие об обработке персональных данных:</label>
+                    </div>
+                    <div class="b-task-input">
+                        <input type="checkbox" name="personal_data_cb" value="agree"><label class="name_label">Я даю свое согласие на передачу в ООО «ЯНДЕКС» резюме и/или анкеты, содержащих мои персональные данные, и согласен с тем, что они будут храниться в ООО «ЯНДЕКС» в течение 5 лет и будут обрабатываться исключительно для целей предложения мне вакансий группы компаний «ЯНДЕКС», в соответствии с Федеральным законом «О персональных данных».</label>
+                    </div>
+                </div>
+                <button class="submit">Отправить</button>
+            </fieldset>
+        </div>
+    </div>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="js/script.js" type="text/javascript"></script>
+</body>
+</html>

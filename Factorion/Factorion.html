@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<meta charset="windows-1251" />
+<body>
+<a href="javascript:void(0)" onclick="calculate(); return false">
+  Записать результаты в консоль (вычисление факторионов)
+</a>
+
+<script type="text/javascript">
+function factorial(input) {
+	if (!input || input==1)
+		return 1;
+		
+	var number = 1;
+	for (var i = input; i > 0; i--)	
+		number = number * i;
+	return number;
+}
+
+function factorion(input){
+	var number = factorial(input%10);
+	var lDecade = div(input,10);
+	while(lDecade != 0)	{
+		number += factorial(lDecade%10);
+		lDecade = div(lDecade,10);
+	}
+	return number;
+}
+
+function div(n, m)
+{    return (n - n % m) / m;
+}
+
+function calculate()
+{    var factorions = [];
+    for (var i=0; i<2540161; i++)
+        if (i == factorion(i))
+			factorions.push(i);
+    console.log('Факторионы: ' + factorions.toString());
+}
+</script>
+</body>
+</html>
